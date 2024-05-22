@@ -33,6 +33,7 @@
             ├── traffic_analysis     <- Impact of traffic and average speed on demand
             ├── trip_analysis_bis    <- General insights on rides (average time, distance, etc.)
 
+
 ## 1. Introduction
 
 In this tutorial we will see how we can deploy a Spark cluster on Google Cloud and how to use it to:

@@ -7,7 +7,7 @@
 ---
 
 ## 0. Project Architecture
-
+```
 ├── gcpspark2
     ├── Makefile           <- Makefile with commands to create GCP cluster, buckets and submit jobs
     │
@@ -30,7 +30,7 @@
             ├── tip_analysis         <- Analysis on how distance, payment type and time can influence tips
             ├── traffic_analysis     <- Impact of traffic and average speed on demand
             ├── trip_analysis_bis    <- General insights on rides (average time, distance, etc.)
-
+```
 ## 1. Introduction
 
 In this tutorial we will see how we can deploy a Spark cluster on Google Cloud and how to use it to:

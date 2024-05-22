@@ -8,8 +8,7 @@
 
 ## 0. Project Architecture
 
-------------
-
+``
 ├── gcpspark2
     ├── Makefile           <- Makefile with commands to create GCP cluster, buckets and submit jobs
     │
@@ -32,7 +31,7 @@
             ├── tip_analysis         <- Analysis on how distance, payment type and time can influence tips
             ├── traffic_analysis     <- Impact of traffic and average speed on demand
             ├── trip_analysis_bis    <- General insights on rides (average time, distance, etc.)
-
+``
 ## 1. Introduction
 
 In this tutorial we will see how we can deploy a Spark cluster on Google Cloud and how to use it to:
@@ -128,7 +127,7 @@ This might take some time. It is also possible for you to not see any output in 
 
 Ok we are now fully set up. To submit a job, first start the cluster in the [GCP UI](https://console.cloud.google.com/dataproc/clusters). Once the cluster is running, at the root of the "gcpspark2" folder, run:
 
-``bash
+```bash
 make submit_job
 ```
 

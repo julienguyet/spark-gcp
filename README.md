@@ -33,7 +33,6 @@
             ├── traffic_analysis     <- Impact of traffic and average speed on demand
             ├── trip_analysis_bis    <- General insights on rides (average time, distance, etc.)
 
-
 ## 1. Introduction
 
 In this tutorial we will see how we can deploy a Spark cluster on Google Cloud and how to use it to:
@@ -127,14 +126,21 @@ This might take some time. It is also possible for you to not see any output in 
 
 ## 5. Run a job
 
-Image for make submit_job:
+Ok we are now fully set up. To submit a job, first start the cluster in the [GCP UI](https://console.cloud.google.com/dataproc/clusters). Once the cluster is running, at the root of the "gcpspark2" folder, run:
+
+``bash
+make submit_job
+```
+
+This will execute the job specified in the .env file defined in step 4. You should see something like this:
+
 
 <img width="536" alt="Screenshot 2024-05-20 at 15 41 54" src="https://github.com/julienguyet/spark-gcp/assets/55974674/071b3a31-ed1d-4cf4-82dc-9f3b0a8b7a9c">
 
-Image for job running:
+And in the GCP UI at cluster level:
 
 <img width="1048" alt="Screenshot 2024-05-21 at 13 17 46" src="https://github.com/julienguyet/spark-gcp/assets/55974674/813ffff6-c38e-49df-841e-4daf3ed1ce92">
 
-Image for Bucket:
+Once the job is finished, you will reveice a success statement in the terminal. Go to your [bucket](https://console.cloud.google.com/storage/) and check that results have been stored. You should see new folders in your bucket like on the following:
 
 <img width="356" alt="Screenshot 2024-05-22 at 18 42 04" src="https://github.com/julienguyet/spark-gcp/assets/55974674/88bc3ad5-f386-4af0-9e5e-02b6d9d66ae1">

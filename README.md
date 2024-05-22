@@ -1,5 +1,5 @@
 # Deploy a Spark cluster on GCP 
 <div>
-  <img src="https://github.com/devicons/devicon/blob/master/icons/googlecloud/googlecloud-original-wordmark.svg" title="Python" alt="Python" width="40" height="40"/>&nbsp;
+  <img src="https://github.com/devicons/devicon/blob/master/icons/googlecloud/googlecloud-original-wordmark.svg" title="Python" alt="Python" width="100" height="100"/>&nbsp;
 </div>
 ---

@@ -58,7 +58,6 @@ Follow the instructions in the official [doc](https://cloud.google.com/sdk/docs/
 
 ```bash
 gcloud --help 
-# Then run 
 gsutil --help
 ```
 

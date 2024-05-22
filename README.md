@@ -1,1 +1,1 @@
-# spark-gcp
+# Deploy a Spark cluster on GCP

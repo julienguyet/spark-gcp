@@ -6,28 +6,7 @@
 
 ---
 
-## 1. Introduction
-
-In this tutorial we will see how we can deploy a Spark cluster on Google Cloud and how to use it to:
-- Process large amount of data and extract insghts from this data :dna:
-- Perform some Machine Learning Prediction job :robot:
-
-Start by cloning this repository and once process is finished, please move to the next section. If you already have the GCP CLI set up and your own bucket and cluster define, you can jump to section 5.
-
----
-
-## 2. Set up your GCP account
-
-First thing to do is for you to create a [Google Cloud Platform](https://cloud.google.com/?hl=en) account if you do not have one. As a new user you will enjoy some free credits (even if being asked for your credit card) and those credits will be more than enough to cover what we will perform here. Just don't forget to stop the cluser (and therefore close the VM) when you are done.
-
-Once your account is created you can go to the console [here](https://console.cloud.google.com/welcome). Feel free to explore different options presented to you if you're interested. 
-Then, in the search bar and search for "billing" account and make sure to link a valid billing account to your project. When you are fully set up, move to the below steps. 
-
----
-
-# 3. Create the GCP bucket
-
-Open the "gcpspark2" folder in your favorite IDE. The folder is structured as below:
+## 0. Project Architecture
 
 ------------
 
@@ -54,6 +33,26 @@ Open the "gcpspark2" folder in your favorite IDE. The folder is structured as be
             ├── traffic_analysis     <- Impact of traffic and average speed on demand
             ├── trip_analysis_bis    <- General insights on rides (average time, distance, etc.)
 
+## 1. Introduction
+
+In this tutorial we will see how we can deploy a Spark cluster on Google Cloud and how to use it to:
+- Process large amount of data and extract insghts from this data :dna:
+- Perform some Machine Learning Prediction job :robot:
+
+Start by cloning this repository and once process is finished, please move to the next section. If you already have the GCP CLI set up and your own bucket and cluster define, you can jump to section 5.
+
+---
+
+## 2. Set up your GCP account
+
+First thing to do is for you to create a [Google Cloud Platform](https://cloud.google.com/?hl=en) account if you do not have one. As a new user you will enjoy some free credits (even if being asked for your credit card) and those credits will be more than enough to cover what we will perform here. Just don't forget to stop the cluser (and therefore close the VM) when you are done.
+
+Once your account is created you can go to the console [here](https://console.cloud.google.com/welcome). Feel free to explore different options presented to you if you're interested. 
+Then, in the search bar and search for "billing" account and make sure to link a valid billing account to your project. When you are fully set up, move to the below steps. 
+
+---
+
+# 3. Create the GCP bucket
 
 Follow the instructions in the official [doc](https://cloud.google.com/sdk/docs/install) corresponding to your operating system to install gcloud & gsutil. You might need to replace the google-cloud-dsk in the current folder. Once process is finished, you can run the below commands to check installation was successful:
 

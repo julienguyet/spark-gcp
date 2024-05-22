@@ -54,6 +54,7 @@ Open the "gcpspark2" folder in your favorite IDE. The folder is structured as be
             ├── traffic_analysis     <- Impact of traffic and average speed on demand
             ├── trip_analysis_bis    <- General insights on rides (average time, distance, etc.)
 
+
 Follow the instructions in the official [doc](https://cloud.google.com/sdk/docs/install) corresponding to your operating system to install gcloud & gsutil. You might need to replace the google-cloud-dsk in the current folder. Once process is finished, you can run the below commands to check installation was successful:
 
 ```bash

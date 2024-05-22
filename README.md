@@ -6,7 +6,29 @@
 
 ---
 
-## 0. Project Architecture
+## 1. Introduction
+
+In this tutorial we will see how we can deploy a Spark cluster on Google Cloud and how to use it to:
+- Process large amount of data and extract insghts from this data :dna:
+- Perform some Machine Learning Prediction job :robot:
+
+Start by cloning this repository and once process is finished, please move to the next section. If you already have the GCP CLI set up and your own bucket and cluster define, you can jump to section 5.
+
+---
+
+## 2. Set up your GCP account
+
+First thing to do is for you to create a [Google Cloud Platform](https://cloud.google.com/?hl=en) account if you do not have one. As a new user you will enjoy some free credits (even if being asked for your credit card) and those credits will be more than enough to cover what we will perform here. Just don't forget to stop the cluser (and therefore close the VM) when you are done.
+
+Once your account is created you can go to the console [here](https://console.cloud.google.com/welcome). Feel free to explore different options presented to you if you're interested. 
+Then, in the search bar and search for "billing" account and make sure to link a valid billing account to your project. When you are fully set up, move to the below steps. 
+
+---
+
+# 3. Create the GCP bucket
+
+The repository architecture looks like the below:
+
 ```
 ├── gcpspark2
     ├── Makefile           <- Makefile with commands to create GCP cluster, buckets and submit jobs
@@ -31,26 +53,6 @@
             ├── traffic_analysis     <- Impact of traffic and average speed on demand
             ├── trip_analysis_bis    <- General insights on rides (average time, distance, etc.)
 ```
-## 1. Introduction
-
-In this tutorial we will see how we can deploy a Spark cluster on Google Cloud and how to use it to:
-- Process large amount of data and extract insghts from this data :dna:
-- Perform some Machine Learning Prediction job :robot:
-
-Start by cloning this repository and once process is finished, please move to the next section. If you already have the GCP CLI set up and your own bucket and cluster define, you can jump to section 5.
-
----
-
-## 2. Set up your GCP account
-
-First thing to do is for you to create a [Google Cloud Platform](https://cloud.google.com/?hl=en) account if you do not have one. As a new user you will enjoy some free credits (even if being asked for your credit card) and those credits will be more than enough to cover what we will perform here. Just don't forget to stop the cluser (and therefore close the VM) when you are done.
-
-Once your account is created you can go to the console [here](https://console.cloud.google.com/welcome). Feel free to explore different options presented to you if you're interested. 
-Then, in the search bar and search for "billing" account and make sure to link a valid billing account to your project. When you are fully set up, move to the below steps. 
-
----
-
-# 3. Create the GCP bucket
 
 Follow the instructions in the official [doc](https://cloud.google.com/sdk/docs/install) corresponding to your operating system to install gcloud & gsutil. You might need to replace the google-cloud-dsk in the current folder. Once process is finished, you can run the below commands to check installation was successful:
 
@@ -122,6 +124,8 @@ make create_cluster
 
 This might take some time. It is also possible for you to not see any output in your terminal. If so, go to the [Dataproc page](https://console.cloud.google.com/dataproc/clusters) in GCP to see the status of your cluster.
 
+---
+
 ## 5. Run a job
 
 Ok we are now fully set up. To submit a job, first start the cluster in the [GCP UI](https://console.cloud.google.com/dataproc/clusters). Once the cluster is running, at the root of the "gcpspark2" folder, run:
@@ -142,6 +146,8 @@ And in the GCP UI at cluster level:
 Once the job is finished, you will reveice a success statement in the terminal. Go to your [bucket](https://console.cloud.google.com/storage/) and check that results have been stored. You should see new folders in your bucket like on the following:
 
 <img width="356" alt="Screenshot 2024-05-22 at 18 42 04" src="https://github.com/julienguyet/spark-gcp/assets/55974674/88bc3ad5-f386-4af0-9e5e-02b6d9d66ae1">
+
+---
 
 ## 6. Results Analysis
 

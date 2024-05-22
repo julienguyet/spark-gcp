@@ -1,6 +1,6 @@
-from pyspark.sql.functions import col, hour, dayofweek, count, year, month, dayofmonth, lag
+from pyspark.sql.functions import col, hour, dayofweek, count, year, month, dayofmonth, lag, floor
 from pyspark.sql.window import Window
-from pyspark.ml.feature import VectorAssembler, VectorSlicer, VectorIndexer
+from pyspark.ml.feature import VectorAssembler
 from pyspark.ml.regression import RandomForestRegressor
 from pyspark.ml import Pipeline
 from pyspark.ml.evaluation import RegressionEvaluator
@@ -38,7 +38,7 @@ def analyze(spark, format="parquet", gcs_input_path=None, gcs_output_path=None):
 
     # Make predictions
     predictions = model.transform(test_df)
-    df_results = predictions.select("prediction", "num_pickups")
+    df_results = predictions.select(col("prediction").cast("int").floor().alias("rounded_prediction"), "num_pickups")
 
     # Evaluate the model
     evaluator = RegressionEvaluator(labelCol="num_pickups", predictionCol="prediction", metricName="mse")

@@ -1,0 +1,1 @@
+from jobs.trip_analysis_bis.main import analyze

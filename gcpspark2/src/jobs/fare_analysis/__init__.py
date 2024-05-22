@@ -1,0 +1,1 @@
+from jobs.fare_analysis.main import analyze

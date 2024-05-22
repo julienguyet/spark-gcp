@@ -1,0 +1,1 @@
+from jobs.demand_predictions.main import analyze

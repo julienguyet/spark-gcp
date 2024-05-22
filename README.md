@@ -8,7 +8,6 @@
 
 ## 0. Project Architecture
 
-``
 ├── gcpspark2
     ├── Makefile           <- Makefile with commands to create GCP cluster, buckets and submit jobs
     │
@@ -31,7 +30,7 @@
             ├── tip_analysis         <- Analysis on how distance, payment type and time can influence tips
             ├── traffic_analysis     <- Impact of traffic and average speed on demand
             ├── trip_analysis_bis    <- General insights on rides (average time, distance, etc.)
-``
+
 ## 1. Introduction
 
 In this tutorial we will see how we can deploy a Spark cluster on Google Cloud and how to use it to:
@@ -143,3 +142,11 @@ And in the GCP UI at cluster level:
 Once the job is finished, you will reveice a success statement in the terminal. Go to your [bucket](https://console.cloud.google.com/storage/) and check that results have been stored. You should see new folders in your bucket like on the following:
 
 <img width="356" alt="Screenshot 2024-05-22 at 18 42 04" src="https://github.com/julienguyet/spark-gcp/assets/55974674/88bc3ad5-f386-4af0-9e5e-02b6d9d66ae1">
+
+## 6. Results Analysis
+
+### 1. Trip Analysis
+### 2. Tip Analysis
+### 3. Fare Analysis
+### 4. Traffic Analysis
+### 5. Demand Predictions

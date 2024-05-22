@@ -16,7 +16,7 @@ Start by cloning this repository and once process is finished, please move to th
 
 ---
 
-## 2. Set up your GCP account
+## 2. Set up your GCP account :cloud:
 
 First thing to do is for you to create a [Google Cloud Platform](https://cloud.google.com/?hl=en) account if you do not have one. As a new user you will enjoy some free credits (even if being asked for your credit card) and those credits will be more than enough to cover what we will perform here. Just don't forget to stop the cluser (and therefore close the VM) when you are done.
 
@@ -25,7 +25,7 @@ Then, in the search bar and search for "billing" account and make sure to link a
 
 ---
 
-# 3. Create the GCP bucket
+# 3. Create the GCP bucket :wastebasket:
 
 The repository architecture looks like the below:
 
@@ -100,7 +100,7 @@ This might take some time based. Wait for the process to finish and then we will
 
 ---
 
-# 4. Create your cluster
+# 4. Create your cluster :desktop_computer:
 
 In your IDE open the .env file, you will see this:
 
@@ -126,7 +126,7 @@ This might take some time. It is also possible for you to not see any output in 
 
 ---
 
-## 5. Run a job
+## 5. Run a job :zap:
 
 Ok we are now fully set up. :nerd_face:
 To submit a job, first start the cluster in the [GCP UI](https://console.cloud.google.com/dataproc/clusters). Once the cluster is running, at the root of the "gcpspark2" folder, run:
@@ -150,10 +150,10 @@ Once the job is finished, you will reveice a success statement in the terminal. 
 
 ---
 
-## 6. Results Analysis
+## 6. Results Analysis :telescope:
 
-### 1. Trip Analysis
-### 2. Tip Analysis
-### 3. Fare Analysis
-### 4. Traffic Analysis
-### 5. Demand Predictions
+### 1. Trip Analysis :oncoming_taxi:
+### 2. Tip Analysis :dollar:
+### 3. Fare Analysis :receipt:
+### 4. Traffic Analysis :red_car:
+### 5. Demand Predictions :crystal_ball:

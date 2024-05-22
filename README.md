@@ -29,6 +29,7 @@ Then, in the search bar and search for "billing" account and make sure to link a
 
 Open the "gcpspark2" folder in your favorite IDE. The folder is structured as below:
 
+------------
 ├── gcpspark2
     ├── Makefile           <- Makefile with commands to create GCP cluster, buckets and submit jobs
     │

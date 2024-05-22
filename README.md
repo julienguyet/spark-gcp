@@ -6,7 +6,7 @@
 
 ---
 
-## 1. Introduction
+## 1. Introduction :open_book:
 
 In this tutorial we will see how we can deploy a Spark cluster on Google Cloud and how to use it to:
 - Process large amount of data and extract insghts from this data :dna:
@@ -128,7 +128,8 @@ This might take some time. It is also possible for you to not see any output in 
 
 ## 5. Run a job
 
-Ok we are now fully set up. To submit a job, first start the cluster in the [GCP UI](https://console.cloud.google.com/dataproc/clusters). Once the cluster is running, at the root of the "gcpspark2" folder, run:
+Ok we are now fully set up. :nerd_face:
+To submit a job, first start the cluster in the [GCP UI](https://console.cloud.google.com/dataproc/clusters). Once the cluster is running, at the root of the "gcpspark2" folder, run:
 
 ```bash
 make submit_job

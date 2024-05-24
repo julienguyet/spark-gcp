@@ -161,3 +161,43 @@ Once the job is finished, you will reveice a success statement in the terminal. 
 ### 3. Fare Analysis :receipt:
 ### 4. Traffic Analysis :red_car:
 ### 5. Demand Predictions :crystal_ball:
+
+The idea is to predict the number of rides requested for a given date. To do this, we created new features in our dataset:
+
+```
+df = df.withColumn("hour_of_day", hour("tpep_pickup_datetime"))
+df = df.withColumn("day_of_week", dayofweek("tpep_pickup_datetime"))
+df = df.withColumn("day_of_month", dayofmonth("tpep_pickup_datetime"))
+df = df.withColumn("month", month("tpep_pickup_datetime"))
+df = df.withColumn("year", year("tpep_pickup_datetime"))
+df_grouped = df.groupBy("hour_of_day", "day_of_week", "day_of_month", "month", "year").agg(count("*").alias("num_pickups"))
+```
+
+At first we used a "simple" Linear Regression model using ```from pyspark.ml.regression import LinearRegression```. However, he didn't get very convincing results:
+
+<img width="495" alt="Screenshot 2024-05-24 at 14 25 15" src="https://github.com/julienguyet/spark-gcp/assets/55974674/f1d71bbe-2d9f-49d2-a8e7-f9b4dfd3e64b">
+
+We observe a very high MSE but even worst, negative predictions - which, obviously, is impossible. To improve our code, we took two steps: (i) update the model and implement Random Forest, and (ii) generate lag features.
+
+We generated the lag features using the below functions:
+
+```
+windowSpec = Window.orderBy("tpep_pickup_datetime")
+df_grouped = df_grouped.withColumn("lag_1", lag("num_pickups", 1).over(windowSpec))
+df_grouped = df_grouped.withColumn("lag_2", lag("num_pickups", 2).over(windowSpec))
+```
+
+This allows us to create new data, including information from the previous rows. For the first column, we are looking one row back, when we take two steps back for the second column. This outputs the following:
+
+```
++-------------------+-----------+-----+-----+
+|tpep_pickup_datetime|num_pickups|lag_1|lag_2|
++-------------------+-----------+-----+-----+
+|2024-05-20 08:00:00|         10| null| null|
+|2024-05-20 09:00:00|         15|   10| null|
+|2024-05-20 10:00:00|         12|   15|   10|
+|2024-05-20 11:00:00|         20|   12|   15|
++-------------------+-----------+-----+-----+
+```
+
+By doing this, we are generating new features to feed the algorithm and potentially improve our predictions. 

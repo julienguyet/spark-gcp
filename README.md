@@ -135,7 +135,11 @@ To submit a job, first start the cluster in the [GCP UI](https://console.cloud.g
 make submit_job
 ```
 
-This will execute the job specified in the .env file defined in step 4. You should see something like this:
+This will execute the job specified in the .env file defined in step 4. 
+
+:warning: Be aware that the prediction job can run for a long time and we do not recommend to run it a multiple time to avoid fees :warning:
+
+When a job is running, you should see something like this:
 
 
 <img width="536" alt="Screenshot 2024-05-20 at 15 41 54" src="https://github.com/julienguyet/spark-gcp/assets/55974674/071b3a31-ed1d-4cf4-82dc-9f3b0a8b7a9c">

@@ -177,7 +177,26 @@ At first we used a "simple" Linear Regression model using ```from pyspark.ml.reg
 
 <img width="495" alt="Screenshot 2024-05-24 at 14 25 15" src="https://github.com/julienguyet/spark-gcp/assets/55974674/f1d71bbe-2d9f-49d2-a8e7-f9b4dfd3e64b">
 
-We observe a very high MSE but even worst, negative predictions - which, obviously, is impossible. To improve our code, we took two steps: (i) update the model and implement Random Forest, and (ii) generate lag features.
+We observe a very high MSE but even worst, negative predictions - which, obviously, is impossible:
+
+```                                                                               
++------------------+-----------+--------------------+
+|        prediction|num_pickups|            features|
++------------------+-----------+--------------------+
+| 2381.874002071474|       3766|[0.0,1.0,1.0,8.0,...|
+|1499.0227822664137|       2993|[0.0,1.0,2.0,5.0,...|
+| 851.7960312795994|        889|[0.0,1.0,7.0,2.0,...|
+|  897.068399076058|       1130|[0.0,1.0,7.0,3.0,...|
+|2409.9077245241083|       3889|[0.0,1.0,15.0,8.0...|
++------------------+-----------+--------------------+
+only showing top 5 rows
+
+                                                                                
+Mean Squared Error (MSE) on test data = 965820.2792360616
+Root Mean Squared Error (RMSE) on test data = 982.7615576710668
+```
+
+To improve our code, we took two steps: (i) update the model and implement Random Forest, and (ii) generate lag features.
 
 We generated the lag features using the below functions:
 
@@ -200,4 +219,19 @@ This allows us to create new data, including information from the previous rows.
 +-------------------+-----------+-----+-----+
 ```
 
-By doing this, we are generating new features to feed the algorithm and potentially improve our predictions. 
+By doing this, we are generating new features to feed the algorithm and potentially improve our predictions:
+
+```
++-----------+-----------+------------+-----+----+-----------+----------+
+|hour_of_day|day_of_week|day_of_month|month|year|num_pickups|Prediction|
++-----------+-----------+------------+-----+----+-----------+----------+
+|          0|          6|           1|    1|2021|          1|       1.0|
+|          0|          6|           1|    1|2021|          1|       1.0|
+|          0|          6|           1|    1|2021|          1|       1.0|
+|          0|          6|           1|    1|2021|          1|       1.0|
+|          0|          6|           1|    1|2021|          1|       1.0|
++-----------+-----------+------------+-----+----+-----------+----------+
+only showing top 5 rows
+
+Mean Squared Error (MSE) on test data = 1.7536823046051544
+```

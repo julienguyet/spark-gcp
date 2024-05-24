@@ -265,9 +265,71 @@ Some potential explanations are: (i) people travelling in the early morning or a
 |   6|             28.82526404406175|
 ```
 
+Finally, if we analyze the most popular locations for pickup and drop, some IDs are reccurent for both field:
+
+```
++------------+------------+
+|PULocationID|pickup_count|
++------------+------------+
+|         237|     1553554|
+|         236|     1424614|
+|         161|     1091329|
+|         132|     1025063|
+|         186|     1019650|
++------------+------------+
+
++------------+----------+
+|DOLocationID|drop_count|
++------------+----------+
+|         236|   1434919|
+|         237|   1356518|
+|         161|   1001077|
+|         170|    920433|
+|         141|    902052|
++------------+----------+
+```
+
+As we can see, 237 - 236 - 161 are always in the top 5. These are probably IDs for districts with many offices or busy areas. To confirm this we could do some further analysis by adding the time of the day next to each pickup / drop ID.
+
 ### 2. Tip Analysis :dollar:
 
+Looking at tips given by customers, we can see locations 255 and 249 are always in the top 5, counting as ~13% of the final bill.
 
+```
++------------+----------------------+   
+|DOLocationID|average_tip_percentage|
++------------+----------------------+
+|          52|   0.13507571291857495|
+|          40|    0.1349902504372998|
+|         255|   0.13294293712786734|
+|         138|   0.13097318414425485|
+|         249|    0.1305343050804773|
++------------+----------------------+
+
++------------+----------------------+
+|PULocationID|average_tip_percentage|
++------------+----------------------+
+|         255|   0.13022838297171588|
+|         249|   0.12950151760556006|
+|         158|   0.12867509846430827|
+|         199|   0.12681086193114427|
+|         125|   0.12679905291940308|
++------------+----------------------+
+
+```
+
+Finally, we can see the tip is increasing with the trip distance:
+```
++-------------+----------------------+
+|trip_distance|average_tip_percentage|
++-------------+----------------------+
+|        59.28|     0.683073832245103|
+|     29707.75|    0.5571030640668524|
+|      6206.38|    0.5141388174807198|
+|        78.29|                   0.5|
+|        427.7|   0.49748734950270457|
++-------------+----------------------+
+```
 
 ### 3. Fare Analysis :receipt:
 ### 4. Traffic Analysis :red_car:

@@ -331,8 +331,92 @@ Finally, we can see the tip is increasing with the trip distance:
 +-------------+----------------------+
 ```
 
+When analysing at time level, tip amount is pretty flat at the hour level, always included between 2.1 and 2.9. Regarding the day of the week, tips are very alike with only a top on Mondays (2.48 on average). Finally, payment time has a major influence on the tip amount, as on average customers tend to tip more with payment type 1 and 0. However, we obtained some negative values for ID 2 and 3, which means some more analysis would be needed to identify outliers or totaly remove those payment types (based on business knowledge - maybe it's outdated types). 
+
+```
++------------+--------------------+
+|payment_type|         average_tip|
++------------+--------------------+
+|           1|  3.0755510306720333|
+|           0|  2.1700068168216124|
+|           4|0.022958282745690756|
+|           2|4.108590704647676E-4|
+|           5|                 0.0|
+|           3|-0.01167058060330...|
++------------+--------------------+
+```
+
 ### 3. Fare Analysis :receipt:
+
+Average fare amount is higher for some locations, for both drop and pickup. Especially IDs 44 - 84 - 204. These neighborhoods are maybe located far from the city center or located in some areas where fare rate is higher by default based on demand and time of the day. 
+
+```
++------------+-------------------+
+|PULocationID|average_fare_amount|
++------------+-------------------+
+|          44|  99.34643231114435|
+|          84|  90.55050847457628|
+|         110|               84.5|
+|         204|  83.64895833333334|
+|          99|  82.19200000000001|
++------------+-------------------+
+
++------------+-------------------+
+|DOLocationID|average_fare_amount|
++------------+-------------------+
+|          44|  93.73268292682927|
+|          84|  81.05751937984495|
+|         204|  78.87132450331126|
+|           5|  75.44233918128654|
+|         265|  72.63122658480091|
++------------+-------------------+
+```
+
+As well, the fare rises with the number of passengers. That said, it is important to challenge those results as maybe people are more sharing cabs in context of business meetings or when going out in the evening, when fare base is higher.
+
+```
++---------------+-------------------+
+|passenger_count|average_fare_amount|
++---------------+-------------------+
+|            9.0|              61.35|
+|            7.0|  52.91679487179488|
+|            8.0|  49.14408163265307|
+|            4.0| 14.284687986716266|
+|            2.0|  13.77639929394148|
+|            3.0| 13.555663818461737|
+|            6.0| 12.751094437062962|
+|            1.0| 12.709557736571133|
+|            5.0| 12.666400646383593|
++---------------+-------------------+
+```
+Finally, we also observed that the average fare amount is increasing with the distance, but the base of this fare amount (cost per miles) is highly decreasing if we compare top 5 longest distances with top 5 smallest rides:
+
+```
++-------------+-------------------------+
+|trip_distance|average_fare_amount_miles|
++-------------+-------------------------+
+|       964.27|       2.5024111504039324|
+|       821.54|       2.5026170362976847|
+|       709.88|        1.714374260438384|
+|        633.8|       1.6172294099084885|
+|       448.47|       0.8919214217227461|
++-------------+-------------------------+
+
++-------------+-------------------------+
+|trip_distance|average_fare_amount_miles|
++-------------+-------------------------+
+|          1.0|        6.599282608601806|
+|         1.01|       6.5126589046862655|
+|         1.02|        6.484397563459084|
+|         1.03|        6.465406383928224|
+|         1.04|         6.44160974897299|
++-------------+-------------------------+
+```
+
 ### 4. Traffic Analysis :red_car:
+
+
+
 ### 5. Demand Predictions :crystal_ball:
 
 The idea is to predict the number of rides requested for a given date. To do this, we created new features in our dataset:

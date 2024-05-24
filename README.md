@@ -157,7 +157,118 @@ Once the job is finished, you will reveice a success statement in the terminal. 
 ## 6. Results Analysis :telescope:
 
 ### 1. Trip Analysis :oncoming_taxi:
+
+If we take a look at the average trip duration (in minutes) by month, we can see rides don't go above 17 minutes in average. Longest rides take place in the last quarter of the year. 
+We can assume this is the busiest quarter of the year in New York, leading to more traffic and more travels as well.
+
+```
++-----+----------------------------+
+|month|average_trip_time_in_minutes|
++-----+----------------------------+
+|    1|          13.961936996778018|
+|    2|           14.88645331599335|
+|    3|          14.730989737679693|
+|    4|          15.510014296137554|
+|    5|          15.906733275470684|
+|    6|           16.82647779882308|
+|    7|           16.62454203050517|
+|    8|          16.572784095643392|
+|    9|           17.50014227893857|
+|   10|          17.420198691973553|
+|   11|           17.83479951080372|
+|   12|          17.450098898736474|
++-----+----------------------------+
+```
+
+At day level, we don't observe huge gaps between the average duration of the rides:
+```
++----------+----------------------------+
+|dayofmonth|average_trip_time_in_minutes|
++----------+----------------------------+
+|         1|            16.8700317003618|
+|         2|           16.63850357855743|
+|         3|          16.814805932609275|
+|         4|          16.634436068423742|
+|         5|          16.471851994600172|
+|         6|          16.303048600094233|
+|         7|           16.89967505732017|
+|         8|          16.748068462688696|
+|         9|          16.866152009163915|
+|        10|          16.966997906493383|
+|        11|          16.356581592314033|
+|        12|           16.65966323130634|
+|        13|          16.420420252622005|
+|        14|          16.530610045065306|
+|        15|           16.60998932527697|
+|        16|          16.516733337402467|
+|        17|          16.755362833144687|
+|        18|          16.453700421957517|
+|        19|          16.286643447453454|
+|        20|           16.50240728529657|
+|        21|           16.45058722970549|
+|        22|          16.551454231721493|
+|        23|          16.905608238998095|
+|        24|           16.85286041197579|
+|        25|           16.33431842675341|
+|        26|          16.267531516389788|
+|        27|           16.34868048773006|
+|        28|          16.504450346204877|
+|        29|          16.571541060018863|
+|        30|          16.776989224727362|
+|        31|          15.851012375526803|
++----------+----------------------------+
+```
+
+Finally, if we go more granular and inspect hourly rides, longest ones are taking place between 2 and 6pm. This is probably related to either people coming back from work or customers traveling for business reasons.
+
+```
++----+----------------------------+
+|hour|average_trip_time_in_minutes|
++----+----------------------------+
+|   0|           15.73026777401626|
+|   1|          15.850162623066096|
+|   2|          14.827951157970006|
+|   3|          15.549170610945119|
+|   4|           16.76969686715942|
+|   5|          16.754208948062853|
+|   6|           16.47000700343768|
+|   7|          16.430668381762295|
+|   8|           15.92411902626667|
+|   9|          15.937159524944118|
+|  10|          15.968707707679128|
+|  11|          15.990086114978192|
+|  12|            16.5502102865842|
+|  13|          16.928557399414526|
+|  14|           18.00871055109994|
+|  15|          18.798311988582824|
+|  16|          18.979807123045823|
+|  17|           17.86783347900255|
+|  18|           16.21771435626182|
+|  19|          15.191404564765671|
+|  20|          15.010945933820969|
+|  21|          15.109525080809965|
+|  22|          15.427000622889635|
+|  23|          15.553266705082581|
++----+----------------------------+
+```
+
+Now regarding the average distance, we observe a few surprising insights: (i) longest rides are happening in the month of mai, (ii) average distance never goes above 14 miles execpt for rides between 4 and 6 am (see table below) and finally, the first and 24th of the month are the most busiest day on average. 
+
+Some potential explanations are: (i) people travelling in the early morning or at night don't have any other alternative than the cab as public transports are closed, (ii) some days are overrepresented during holiday seasons (like the 1st of January and 24th of December). 
+
+```
++----+------------------------------+
+|hour|average_trip_distance_in_miles|
++----+------------------------------+
+|   4|             45.89584296445569|
+|   5|            43.514597392531904|
+|   6|             28.82526404406175|
+```
+
 ### 2. Tip Analysis :dollar:
+
+
+
 ### 3. Fare Analysis :receipt:
 ### 4. Traffic Analysis :red_car:
 ### 5. Demand Predictions :crystal_ball:
@@ -233,5 +344,6 @@ By doing this, we are generating new features to feed the algorithm and potentia
 +-----------+-----------+------------+-----+----+-----------+----------+
 only showing top 5 rows
 
-Mean Squared Error (MSE) on test data = 1.7536823046051544
+Mean Squared Error (MSE) on test data = 1.75
+Root Mean Squared Error (RMSE) on test data = 1.32
 ```

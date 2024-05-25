@@ -430,7 +430,7 @@ df = df.withColumn("year", year("tpep_pickup_datetime"))
 df_grouped = df.groupBy("hour_of_day", "day_of_week", "day_of_month", "month", "year").agg(count("*").alias("num_pickups"))
 ```
 
-At first we used a "simple" Linear Regression model using ```from pyspark.ml.regression import LinearRegression```. However, he didn't get very convincing results:
+At first we used a "simple" Linear Regression model using ```from pyspark.ml.regression import LinearRegression```. However, we didn't get very convincing results:
 
 <img width="495" alt="Screenshot 2024-05-24 at 14 25 15" src="https://github.com/julienguyet/spark-gcp/assets/55974674/f1d71bbe-2d9f-49d2-a8e7-f9b4dfd3e64b">
 

@@ -415,7 +415,45 @@ Finally, we also observed that the average fare amount is increasing with the di
 
 ### 4. Traffic Analysis :red_car:
 
+Regarding the average speed of a taxi during a ride, we obtain higher values for rides taking place in the early morning. Similarly, at a day level, it goes faster on Sundays when probably there is less traffic as less people go to work or travel for business reasons. 
 
+```
++-----------+------------------+
+|pickup_hour|avg_speed_mph_hour|
++-----------+------------------+
+|          4|239.99951540585712|
+|          5| 233.0722853687069|
+|          6| 93.29679993113209|
+|          7| 51.16262524578473|
+|          0| 47.56445934253129|
++----------------+-------------+
+
++----------------+------------------+
+|pickup_dayofweek| avg_speed_mph_day|
++----------------+------------------+
+|               7|31.690798066028428|
+|               3| 30.87763809611808|
+|               6|30.813325826324764|
+|               1|29.823814846496813|
+|               2|29.441124897353706|
+|               5|28.728775405428337|
+|               4|  26.4279929494643|
++----------------+------------------+
+
+```
+Finally, if we deep dive at week of the year level, we observe that top 5 weeks with highest average speed are part of spring or summer (except for week 47 which is in November). This might be related to weather conditions and/or bank holidays. 
+
+```
++-----------------+------------------+
+|pickup_weekofyear|avg_speed_mph_week|
++-----------------+------------------+
+|               24| 49.16818522061936|
+|               18| 47.78551966079165|
+|               32|46.211139434774914|
+|               15| 42.37304503533792|
+|               47| 40.52200100060329|
++-----------------+------------------+
+```
 
 ### 5. Demand Predictions :crystal_ball:
 
@@ -434,24 +472,7 @@ At first we used a "simple" Linear Regression model using ```from pyspark.ml.reg
 
 <img width="495" alt="Screenshot 2024-05-24 at 14 25 15" src="https://github.com/julienguyet/spark-gcp/assets/55974674/f1d71bbe-2d9f-49d2-a8e7-f9b4dfd3e64b">
 
-We observe a very high MSE but even worst, negative predictions - which, obviously, is impossible:
-
-```                                                                               
-+------------------+-----------+--------------------+
-|        prediction|num_pickups|            features|
-+------------------+-----------+--------------------+
-| 2381.874002071474|       3766|[0.0,1.0,1.0,8.0,...|
-|1499.0227822664137|       2993|[0.0,1.0,2.0,5.0,...|
-| 851.7960312795994|        889|[0.0,1.0,7.0,2.0,...|
-|  897.068399076058|       1130|[0.0,1.0,7.0,3.0,...|
-|2409.9077245241083|       3889|[0.0,1.0,15.0,8.0...|
-+------------------+-----------+--------------------+
-only showing top 5 rows
-
-                                                                                
-Mean Squared Error (MSE) on test data = 965820.2792360616
-Root Mean Squared Error (RMSE) on test data = 982.7615576710668
-```
+We observe a very high MSE but even worst, negative predictions - which, obviously, is impossible.
 
 To improve our code, we took two steps: (i) update the model and implement Random Forest, and (ii) generate lag features.
 
